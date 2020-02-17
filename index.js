@@ -72,5 +72,9 @@ app.use("/", function (req, res, next) {
 
     currentPath = req.path.replace(/.|"|'|-|\/|\\/, "");
 
-    res.sendFile(path.join(__dirname, "./newsletters/", currentPath + ".html"));
+    res.sendFile(path.join(__dirname, "./newsletters/", currentPath + ".html"), function (err) {
+        if (err) {
+          res.status(err.status).end();
+        }
+      });
 });

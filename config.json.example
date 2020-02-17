@@ -1,0 +1,6 @@
+{
+    "port": 80,
+    "authKey": "[Random String]",
+    "url": "https://domain.com/",
+    "webhookPath": "/api/webhooks/something/something"
+}

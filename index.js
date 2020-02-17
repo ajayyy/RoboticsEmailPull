@@ -67,7 +67,9 @@ app.post("/newsletter/" + authKey, async function (req, res) {
 });
 
 // Host newsletter files
-app.use("/", function (req, res) {
+app.use("/", function (req, res, next) {
+    if (req.method !== "GET") return next();
+
     currentPath = req.path.replace(/.|"|'|-|\/|\\/, "");
 
     res.sendFile(path.join(__dirname, "./newsletters/", currentPath + ".html"));
